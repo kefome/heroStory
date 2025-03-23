@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk34ps3wm2ivh"]
+[gd_scene load_steps=7 format=3 uid="uid://bk34ps3wm2ivh"]
 
 [ext_resource type="Script" uid="uid://b27sth4kf7806" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Script" uid="uid://ca4d0d1irofue" path="res://StateMachine.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://be4pdu0bultw2" path="res://Hitbox.gd" id="2_qi2p4"]
+[ext_resource type="Script" uid="uid://bkd2n3shxm02j" path="res://Hurtbox.gd" id="3_iifgy"]
+[ext_resource type="Script" uid="uid://dxp8nb4gcmn5w" path="res://Stats.gd" id="5_epg4t"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4gyqm"]
 
@@ -13,6 +16,18 @@ script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Graphics"]
 
+[node name="Hitbox" type="Area2D" parent="Graphics"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_qi2p4")
+metadata/_custom_type_script = "uid://be4pdu0bultw2"
+
+[node name="Hurtbox" type="Area2D" parent="Graphics"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_iifgy")
+metadata/_custom_type_script = "uid://bkd2n3shxm02j"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -23,3 +38,8 @@ libraries = {
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_7k104")
 metadata/_custom_type_script = "uid://ca4d0d1irofue"
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_epg4t")
+max_health = 5
+metadata/_custom_type_script = "uid://dxp8nb4gcmn5w"
